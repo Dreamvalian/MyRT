@@ -29,9 +29,11 @@ Content di page ini isina ada 2 table atau list(pilih salah satu bagusna gimana)
   <nav class="sb-topnav navbar navbar-expand navbar-dark bg-dark">
     <!-- Navbar Brand-->
     <a class="navbar-brand ps-3" href="{{ url('home-admin') }}">MyRT</a>
+
     <!-- Sidebar Toggle-->
     <button class="btn btn-link btn-sm order-1 order-lg-0 me-4 me-lg-0" id="sidebarToggle" href="#!"><i
         class="fas fa-bars"></i></button>
+
     <!-- Navbar Search-->
     <form class="d-none d-md-inline-block form-inline ms-auto me-0 me-md-3 my-2 my-md-0">
       <div class="input-group">
@@ -40,6 +42,7 @@ Content di page ini isina ada 2 table atau list(pilih salah satu bagusna gimana)
         <button class="btn btn-primary" id="btnNavbarSearch" type="button"><i class="fas fa-search"></i></button>
       </div>
     </form>
+
     <!-- Navbar-->
     <ul class="navbar-nav ms-auto ms-md-0 me-3 me-lg-4">
       <li class="nav-item dropdown">
@@ -75,8 +78,8 @@ Content di page ini isina ada 2 table atau list(pilih salah satu bagusna gimana)
             </a>
             <div class="collapse" id="collapseLayouts" aria-labelledby="headingOne" data-bs-parent="#sidenavAccordion">
               <nav class="sb-sidenav-menu-nested nav">
-                <a class="nav-link" href="{{ url('layout-static') }}">Report Admin</a>
-                <a class="nav-link" href="{{ url('layout-sidenav-light') }}">Activity Admin</a>
+                <a class="nav-link" href="{{ url('report-admin') }}">Report Admin</a>
+                <a class="nav-link" href="{{ url('activity-admin') }}">Activity Admin</a>
               </nav>
             </div>
           </div>
@@ -88,17 +91,18 @@ Content di page ini isina ada 2 table atau list(pilih salah satu bagusna gimana)
       </nav>
     </div>
 
+    <!-- Dashboard -->
     <div id="layoutSidenav_content">
       <main>
         <div class="container-fluid px-4">
           <h1 class="mt-4">Dashboard</h1>
           <ol class="breadcrumb mb-4">
-            <li class="breadcrumb-item active">Dashboard</li>
+            <li class="breadcrumb-item active">Data Admin</li>
           </ol>
           <div class="card mb-4">
             <div class="card-header">
               <i class="fas fa-table me-1"></i>
-              DataTable Example
+              Data Penduduk
             </div>
             <div class="card-body">
               <table id="datatablesSimple">
@@ -230,8 +234,8 @@ Content di page ini isina ada 2 table atau list(pilih salah satu bagusna gimana)
                 </tbody>
               </table>
             </div>
-
           </div>
+          <a href="#" class="btn btn-success mb-4"><i class="fas fa-plus"></i> Add New Data Penduduk</a>
 
       </main>
       <footer class="py-4 bg-light mt-auto">
@@ -246,6 +250,7 @@ Content di page ini isina ada 2 table atau list(pilih salah satu bagusna gimana)
           </div>
         </div>
       </footer>
+
     </div>
   </div>
 
