@@ -29,9 +29,9 @@
             <button class="btn btn-success">Sign Up</button>
           </a>
         </li>
-        <li class="nav-item">
+        <li class="nav-item d-flex justify-content-center align-items-center">
           <a class="nav-link" href="#">
-            <button class="btn btn-secondary">Profile</button>
+            <i class="fas fa-user fa-2x"></i>
           </a>
         </li>
       </ul>
