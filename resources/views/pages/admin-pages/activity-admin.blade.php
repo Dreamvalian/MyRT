@@ -1,4 +1,4 @@
-<!-- 
+<!--
     Content disini isina list kegiatan ngambil dari data kegiatan, data kegiatan ini bisa di CRUD sama si RT
  -->
 
@@ -103,23 +103,29 @@
                   <tr>
                     <th>#</th>
                     <th>Activity Name</th>
-                    <th>Date</th>
+                    <th>Date Start</th>
                     <th>Actions</th>
                   </tr>
                 </thead>
                 <tbody>
+                    @foreach ($activities as $act )
+
                   <tr>
-                    <td>1</td>
-                    <td>Community Meeting</td>
-                    <td>2023-05-18</td>
+                    <td>{{$act->activity_id}}</td>
+                    <td>{{$act->title}}</td>
+                    <td>{{$act->date_start}}</td>
                     <td>
-                      <a href="#" class="btn btn-info btn-sm"><i class="fas fa-eye"></i></a>
-                      <a href="{{ url('edit-activity-admin') }}" class="btn btn-warning btn-sm"><i
+                      <a href="{{ url("edit-activity-admin") }}" class="btn btn-info btn-sm"><i class="fas fa-eye"></i></a>
+                      <a href="{{ route('activity.edit', $act->activity_id) }}" class="btn btn-warning btn-sm"><i
                           class="fas fa-edit"></i></a>
-                      <a href="#" class="btn btn-danger btn-sm"><i class="fas fa-trash"></i></a>
+                          <form action="{{ route('activity.destroy', $act->activity_id) }}" method="POST">
+                                @csrf
+                                @method('DELETE')
+                                <button type="submit" class="btn btn-danger btn-sm" onclick="return confirm('Are you sure you want to delete this activity?');"><i class="fas fa-trash"></i></button>
+                            </form>
                     </td>
                   </tr>
-                  <!-- Add more activity rows as needed -->
+                  @endforeach
                 </tbody>
               </table>
             </div>

@@ -1,8 +1,8 @@
-<!-- 
+<!--
     Content disini isina list report dari warga, sama kaya di MyRT mobile, ada button buat approve dan reject report
  -->
 
-<!-- 
+<!--
     Content disini isina list kegiatan ngambil dari data kegiatan, data kegiatan ini bisa di CRUD sama si RT
  -->
 
@@ -107,7 +107,8 @@
                   <tr>
                     <th>#</th>
                     <th>Report Title</th>
-                    <th>Date</th>
+                    <th>Date Start</th>
+                    <th>Date End</th>
                     <th>Actions</th>
                     <th>Actions</th>
                   </tr>
@@ -116,6 +117,7 @@
                   <tr>
                     <td>1</td>
                     <td>Quarterly Report</td>
+                    <td>2023-05-18</td>
                     <td>2023-05-18</td>
                     <td>
                       <a href="#" class="btn btn-info btn-sm"><i class="fas fa-eye"></i></a>
