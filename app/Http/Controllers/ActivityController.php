@@ -53,4 +53,6 @@ class ActivityController extends Controller
         $activities->delete();
         return redirect('activity-admin')->with('success', 'Activity deleted');
     }
+
+
 }

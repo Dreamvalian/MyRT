@@ -16,18 +16,18 @@ return new class extends Migration
             $table->string('type_report');
             $table->string('title');
             $table->string('description');
-            $table->string('date_start');
+            $table->date('date_start');
             $table->date('date_end');
             $table->string('picture');
             $table->bigInteger('user_id')->unsigned();
             $table->foreign('user_id')->references('user_id')->on('users');
+            $table->string('status');
             $table->timestamps();
         });
     }
 
-
     public function down(): void
     {
-        Schema::dropIfExists('report');
+        Schema::dropIfExists('reports');
     }
 };

@@ -6,6 +6,7 @@ use App\Http\Controllers\AdminController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\ResidentsController;
 use App\Http\Controllers\ActivityController;
+use App\Http\Controllers\ReportController;
 
 Route::get('/', function () {
     return view('welcome');
@@ -21,6 +22,8 @@ Route::get('/login', function () {
 Route::get('/register', [RegisterController::class, 'create']);
 Route::post('/register', [RegisterController::class, 'store']);
 Route::get('/home-admin', [ResidentsController::class, 'index']);
+
+/* activity*/
 Route::get('/add-activity-admin', [ActivityController::class, 'create']);
 Route::post('/add-activity-admin', [ActivityController::class, 'store']);
 Route::get('/activity-admin', [ActivityController::class, 'index']);
@@ -28,6 +31,10 @@ Route::get('activity-admin/edit/{activity_id}', [ActivityController::class, 'edi
 Route::put('activity-admin/update/{activity_id}', [ActivityController::class, 'update'])->name('activity.update');
 Route::delete('activity-admin/delete/{activity_id}', [ActivityController::class, 'destroy'])->name('activity.destroy');
 
+/*report*/
+Route::get('/report-admin',[ReportController::class, 'index']);
+Route::post('/report/check/{report_id}', [ReportController::class, 'check'])->name('report.check');
+Route::post('/report/reject/{report_id}', [ReportController::class, 'reject'])->name('report.reject');
 
 // Route::get('/home-admin', function () {
 //     return view('pages.admin-pages.home-admin');
@@ -59,9 +66,9 @@ Route::group(['middleware' => ['auth']], function () {
     });
 });
 
-Route::get('/report-admin', function () {
-    return view('pages.admin-pages.report-admin');
-})->name('report-admin');
+// Route::get('/report-admin', function () {
+//     return view('pages.admin-pages.report-admin');
+// })->name('report-admin');
 
 // Route::get('/activity-admin', function () {
 //     return view('pages.admin-pages.activity-admin');
