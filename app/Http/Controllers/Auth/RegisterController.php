@@ -46,9 +46,11 @@ class RegisterController extends Controller
         Auth::login($user);
 
         if ($user->role === 'ADMIN') {
-            return redirect()->route('home-admin');
+            // dd(Auth::user());
+            return redirect()->intended('admin');
         } else {
-            return redirect()->route('home-user');
+            // dd(Auth::user());
+            return redirect()->intended('user');
         }
     }
 }

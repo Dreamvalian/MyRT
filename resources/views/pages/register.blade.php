@@ -33,7 +33,7 @@
                   <h3 class="text-center font-weight-light my-4">Create Account</h3>
                 </div>
                 <div class="card-body">
-                  <form method="POST" action="register">
+                  <form method="POST" action="{{ route('register-process') }}">
                     @csrf
                     <div class="row mb-3">
                       <div class="col-md-6">
