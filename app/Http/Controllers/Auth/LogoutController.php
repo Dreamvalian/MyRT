@@ -12,6 +12,6 @@ class LogoutController extends Controller
     {
         $request->session()->flush();
         Auth::logout();
-        return redirect()->route('/');
+        return redirect()->route('landing-page');
     }
 }

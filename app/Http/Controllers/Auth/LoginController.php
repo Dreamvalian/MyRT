@@ -17,11 +17,11 @@ class LoginController extends Controller
 
             if ($user->role == 'ADMIN') {
 
-                return redirect()->intended('admin');
-                // return redirect()->intended('home-admin');
+                // return redirect()->intended('admin');
+                return redirect()->intended('home-admin');
             } else if ($user->role == 'USER') {
-                return redirect()->intended('user');
-                // return redirect()->intended('home-user');
+                // return redirect()->intended('user');
+                return redirect()->intended('home-user');
             }
         }
 
@@ -41,11 +41,11 @@ class LoginController extends Controller
         if (Auth::attempt($credential)) {
             $user = Auth::user();
             if ($user->role === 'ADMIN') {
-
-                return redirect()->intended('admin');
+                return redirect()->intended('home-admin');
+                // return redirect()->intended('admin');
             } else if ($user->role === 'USER') {
-
-                return redirect()->intended('user');
+                return redirect()->intended('home-user');
+                // return redirect()->intended('user');
             }
             return redirect()->intended('/');
         }
