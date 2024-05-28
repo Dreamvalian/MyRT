@@ -92,6 +92,14 @@
                   <textarea class="form-control" id="description" name="description" rows="3" required></textarea>
                 </div>
                 <div class="mb-3">
+                  <label for="activityCategory" class="form-label">Category</label>
+                  <select class="form-control" id="category" name="category" rows="3" required>
+                    <option value="1">Kegiatan</option>
+                    <option value="2">Laporan</option>
+                    <option value="3">Lainnya</option>
+                  </select>
+                </div>
+                <div class="mb-3">
                   <label for="activityDate" class="form-label">Date Start</label>
                   <input type="date" class="form-control" id="date_start" name="date_start" required>
                 </div>
