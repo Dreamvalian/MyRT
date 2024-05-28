@@ -3,9 +3,9 @@
     * Copyright 2013-2023 Start Bootstrap
     * Licensed under MIT (https://github.com/StartBootstrap/startbootstrap-sb-admin/blob/master/LICENSE)
     */
-    // 
+    //
 // Scripts
-// 
+//
 
 window.addEventListener('DOMContentLoaded', event => {
 
@@ -23,4 +23,22 @@ window.addEventListener('DOMContentLoaded', event => {
         });
     }
 
+});
+
+document.addEventListener('DOMContentLoaded', function () {
+    const today = new Date().toISOString().split('T')[0];
+    const dateStartInput = document.getElementById('date_start');
+    const dateEndInput = document.getElementById('date_end');
+
+    dateStartInput.min = today;
+
+    dateStartInput.addEventListener('change', function () {
+        dateEndInput.min = dateStartInput.value;
+    });
+
+    dateEndInput.addEventListener('change', function () {
+        if (dateEndInput.value < dateStartInput.value) {
+            dateEndInput.value = dateStartInput.value;
+        }
+    });
 });

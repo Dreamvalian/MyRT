@@ -19,7 +19,7 @@ class RegisterController extends Controller
     public function store(Request $request)
     {
         // nama, nik, email, nomor_kk, password, nomor_telepon
-        /* 
+        /*
         Validation
         */
         $request->validate([
@@ -47,10 +47,10 @@ class RegisterController extends Controller
 
         if ($user->role === 'ADMIN') {
             // dd(Auth::user());
-            return redirect()->intended('admin');
+            return redirect()->intended('home-admin');
         } else {
             // dd(Auth::user());
-            return redirect()->intended('user');
+            return redirect()->intended('home-user');
         }
     }
 }

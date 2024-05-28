@@ -1,7 +1,3 @@
-<!--
-    Isina form buat add kegiatan
- -->
-
 <!DOCTYPE html>
 <html lang="en">
 
@@ -94,11 +90,11 @@
                                     <textarea class="form-control" id="description" name="description" rows="3" required></textarea>
                                 </div>
                                 <div class="mb-3">
-                                    <label for="activityDate" class="form-label">Date Start</label>
+                                    <label for="activityDateStart" class="form-label">Date Start</label>
                                     <input type="date" class="form-control" id="date_start" name="date_start" required>
                                 </div>
                                 <div class="mb-3">
-                                    <label for="activityDate" class="form-label">Date End</label>
+                                    <label for="activityDateEnd" class="form-label">Date End</label>
                                     <input type="date" class="form-control" id="date_end" name="date_end" required>
                                 </div>
                                 <div class="mb-3">
