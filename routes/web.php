@@ -81,6 +81,9 @@ Route::get('/add-activity-admin', function () {
 // })->name('activity-admin');
 
 
-// Route::get('/edit-activity-admin', function () {
-//     return view('pages.admin-pages.edit-activity-admin');
-// });
+Route::get('/home-users', function () {
+    return view('pages.user-pages.home-user');
+});
+Route::get('/add-report-user', function () {
+    return view('pages.user-pages.add-report-user');
+});
