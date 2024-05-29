@@ -1,4 +1,4 @@
-<!-- 
+<!--
     Isina form buat create report
  -->
 
@@ -81,34 +81,34 @@
               Add New Report
             </div>
             <div class="card-body">
-              <form action="{{ url('add-report-user') }}" method="POST">
+              <form action="{{ url('add-report-user') }}" method="POST" enctype="multipart/form-data">
                 @csrf
                 <div class="mb-3">
-                  <label for="activityTitle" class="form-label">Report Title</label>
+                  <label for="reportTitle" class="form-label">Report Title</label>
                   <input type="text" class="form-control" id="title" name="title" required>
                 </div>
                 <div class="mb-3">
-                  <label for="activityDescription" class="form-label">Description</label>
+                  <label for="reportDescription" class="form-label">Description</label>
                   <textarea class="form-control" id="description" name="description" rows="3" required></textarea>
                 </div>
                 <div class="mb-3">
-                  <label for="activityCategory" class="form-label">Category</label>
-                  <select class="form-control" id="category" name="category" rows="3" required>
-                    <option value="1">Kegiatan</option>
-                    <option value="2">Laporan</option>
-                    <option value="3">Lainnya</option>
+                  <label for="reportCategory" class="form-label">Category</label>
+                  <select class="form-control" id="category" name="type_report" rows="3" required>
+                    <option value="Kegiatan">Kegiatan</option>
+                    <option value="Keresahan">Keresahan</option>
+                    <option value="Perubahaan Data">Perubahaan Data</option>
                   </select>
                 </div>
                 <div class="mb-3">
-                  <label for="activityDate" class="form-label">Date Start</label>
+                  <label for="reportDate" class="form-label">Date Start</label>
                   <input type="date" class="form-control" id="date_start" name="date_start" required>
                 </div>
                 <div class="mb-3">
-                  <label for="activityDate" class="form-label">Date End</label>
+                  <label for="reportDate" class="form-label">Date End</label>
                   <input type="date" class="form-control" id="date_end" name="date_end" required>
                 </div>
                 <div class="mb-3">
-                  <label for="activityPicture" class="form-label">Image</label>
+                  <label for="reportPicture" class="form-label">Image</label>
                   <input type="file" class="form-control" id="picture" name="picture">
                 </div>
                 <button type="submit" class="btn btn-primary">Add Report</button>

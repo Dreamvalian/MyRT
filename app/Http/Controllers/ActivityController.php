@@ -21,10 +21,20 @@ class ActivityController extends Controller
 
     public function store(Request $request)
     {
-        $data['activities'] = Activities::all();
-        $input = $request->all();
-        activities::create($input);
-        // return view('pages.admin-pages.activity-admin', $data)->with('success', 'Activity created successfully');
+        $imagePath = 'default.png';
+        if ($request->hasFile('picture')) {
+            $image = $request->file('picture');
+            $imagePath = $image->store('images', 'public');
+        }
+
+        Activities::create([
+            'title' => $request->title,
+            'description' => $request->description,
+            'date_start' => $request->date_start,
+            'date_end' => $request->date_end,
+            'picture' => $imagePath,
+            'status' => null,
+        ]);
         return redirect('activity-admin')->with('success', 'Activity created successfully');
     }
 

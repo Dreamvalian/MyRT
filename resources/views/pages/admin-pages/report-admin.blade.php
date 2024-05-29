@@ -47,7 +47,7 @@
                     <li>
                         <hr class="dropdown-divider" />
                     </li>
-                    <li><a class="dropdown-item" href="#!">Logout</a></li>
+                    <li><a class="dropdown-item" href="{{route('logout')}}">Logout</a></li>
                 </ul>
             </li>
         </ul>
@@ -143,7 +143,6 @@
                             </table>
                         </div>
                     </div>
-                    <a href="#" class="btn btn-success mb-4"><i class="fas fa-plus"></i> Add New Report</a>
                 </div>
             </main>
         </div>
