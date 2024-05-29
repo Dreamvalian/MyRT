@@ -1,7 +1,7 @@
 <?php
 
 namespace App\Http\Controllers;
-
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
 use App\Models\Reports;
 
@@ -13,11 +13,35 @@ class ReportController extends Controller
         return view('pages.admin-pages.report-admin', $data);
     }
 
+    public function create()
+    {
+        return view('pages.user-pages.add-report-user');
+    }
+
+
+
     public function store(Request $request)
     {
-        $input = $request->all();
-        reports::create($input);
-        return redirect()->route('report-admin.index')->with('success', 'Report added successfully.');
+
+        // Handle file upload
+        $imagePath = 'default.png';
+        if ($request->hasFile('picture')) {
+            $image = $request->file('picture');
+            $imagePath = $image->store('images', 'public'); // Menyimpan file ke direktori 'public/images'
+        }
+
+        Reports::create([
+            'type_report' => $request->type_report,
+            'title' => $request->title,
+            'description' => $request->description,
+            'date_start' => $request->date_start,
+            'date_end' => $request->date_end,
+            'picture' => $imagePath,
+            'status' => null,
+            'user_id' => Auth::id(),
+        ]);
+
+        return redirect('home-user')->with('success', 'Activity created successfully');
     }
 
     public function check($report_id)

@@ -36,9 +36,10 @@ Route::delete('activity-admin/delete/{activity_id}', [ActivityController::class,
 Route::get('/report-admin', [ReportController::class, 'index']);
 Route::post('/report/check/{report_id}', [ReportController::class, 'check'])->name('report.check');
 Route::post('/report/reject/{report_id}', [ReportController::class, 'reject'])->name('report.reject');
+// Route::get('/add-report-user', [ReportController::class, 'create']);
+Route::post('/add-report-user', [ReportController::class, 'store']);
 
-/* residents */
-Route::get('/add-resident-admin', [ActivityController::class, 'create']);
+
 
 Route::group(['middleware' => ['auth']], function () {
     Route::group(['middleware' => ['isAdmin:ADMIN']], function () {
@@ -84,6 +85,9 @@ Route::get('/add-activity-admin', function () {
 // })->name('activity-admin');
 
 
-// Route::get('/edit-activity-admin', function () {
-//     return view('pages.admin-pages.edit-activity-admin');
-// });
+Route::get('/home-users', function () {
+    return view('pages.user-pages.home-user');
+});
+Route::get('/add-report-user', function () {
+    return view('pages.user-pages.add-report-user');
+});

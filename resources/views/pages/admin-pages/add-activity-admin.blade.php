@@ -79,7 +79,7 @@
                             Add New Activity
                         </div>
                         <div class="card-body">
-                            <form action="{{ url('add-activity-admin') }}" method="POST">
+                            <form action="{{ url('add-activity-admin') }}" method="POST" enctype="multipart/form-data">
                                 @csrf
                                 <div class="mb-3">
                                     <label for="activityTitle" class="form-label">Activity Title</label>
