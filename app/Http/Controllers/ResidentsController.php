@@ -33,5 +33,4 @@ class ResidentsController extends Controller
        return view('pages.admin-pages.home-admin', compact('residents'));
    }
 
-
 }

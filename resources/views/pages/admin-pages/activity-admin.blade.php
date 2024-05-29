@@ -144,6 +144,15 @@
                                                             <label for="date_start" class="form-label">Tanggal Selesai:</label>
                                                             <input type="text" class="form-control" id="date_end" value="{{$act->date_end}}" readonly>
                                                         </div>
+                                                        <div class="col-md-6">
+                                                            <label for="picture" class="form-label">Picture:</label>
+                                                            @if($act->picture)
+                                                            <img src="{{ asset('storage/' . $act->picture) }}" class="img-fluid" alt="Activity Picture">
+                                                            @else
+                                                            <p>No picture available</p>
+                                                            @endif
+                                                        </div>
+
                                                     </div>
                                                 </div>
                                                 <div class="modal-footer">
