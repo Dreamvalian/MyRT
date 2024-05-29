@@ -44,6 +44,7 @@ Route::group(['middleware' => ['auth']], function () {
     });
     Route::group(['middleware' => ['isAdmin:USER']], function () {
         // Route::resource('user', UserController::class);
+        // dd(Auth::user()->nomor_kk);
         Route::get('/home-user', [UserController::class, 'index'])->name('home-user');
     });
 });
