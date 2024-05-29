@@ -37,6 +37,9 @@ Route::get('/report-admin', [ReportController::class, 'index']);
 Route::post('/report/check/{report_id}', [ReportController::class, 'check'])->name('report.check');
 Route::post('/report/reject/{report_id}', [ReportController::class, 'reject'])->name('report.reject');
 
+/* residents */
+Route::get('/add-resident-admin', [ActivityController::class, 'create']);
+
 Route::group(['middleware' => ['auth']], function () {
     Route::group(['middleware' => ['isAdmin:ADMIN']], function () {
         // Route::resource('admin', AdminController::class);

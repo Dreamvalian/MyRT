@@ -16,7 +16,7 @@ class ResidentsController extends Controller
 
    public function create()
    {
-       return view('pages.admin-pages.home-admin');
+       return view('pages.admin-pages.add-resident-admin');
    }
 
    public function store(Request $request)

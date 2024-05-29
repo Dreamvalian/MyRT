@@ -134,7 +134,7 @@
                             </table>
                         </div>
                     </div>
-                    <a href="#" class="btn btn-success mb-4"><i class="fas fa-plus"></i> Add New Data Penduduk</a>
+                    <a href="{{ url('add-resident-admin') }}" class="btn btn-success mb-4"><i class="fas fa-plus"></i> Add New Data Penduduk</a>
                 </div>
             </main>
             <footer class="py-4 bg-light mt-auto">
