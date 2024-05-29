@@ -207,6 +207,7 @@
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-primary" onclick="exportToCSV('residentModal{{$rsd->nomor_kk}}')">Export CSV</button>
                 </div>
             </div>
         </div>
