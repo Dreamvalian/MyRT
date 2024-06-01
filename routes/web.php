@@ -86,9 +86,15 @@ Route::get('/add-activity-admin', function () {
 // })->name('activity-admin');
 
 
-// Route::get('/home-users', function () {
-//     return view('pages.user-pages.home-user');
-// });
+Route::get('/home-users', function () {
+    return view('pages.user-pages.home-user');
+});
+Route::get('/home-admins', function () {
+    return view('pages.admin-pages.home-admin');
+});
 Route::get('/add-report-user', function () {
     return view('pages.user-pages.add-report-user');
+});
+Route::get('/charts', function () {
+    return view('charts');
 });
