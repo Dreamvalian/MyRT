@@ -13,7 +13,7 @@ class UserController extends Controller
     {
         // dd(Auth::user()->nomor_kk);
         $family['family'] = Residents::where('nomor_kk', Auth::user()->nomor_kk)->get();
-        $visitor['visitor'] = Reports::where('user_id', Auth::user()->user_id)->get();
+        $visitor['visitor'] = Reports::where('user_id', Auth::user()->user_id)->where('type_report', 'Tamu')->get();
         $data = [
             'family' => $family,
             'visitors' => $visitor

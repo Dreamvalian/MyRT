@@ -17,21 +17,18 @@
     <!-- Navbar Brand-->
     <a class="navbar-brand ps-3" href="/">MyRT</a>
     <!-- Sidebar Toggle-->
-    <button class="btn btn-link btn-sm order-1 order-lg-0 me-4 me-lg-0" id="sidebarToggle" href="#!"><i
-        class="fas fa-bars"></i></button>
+    <button class="btn btn-link btn-sm order-1 order-lg-0 me-4 me-lg-0" id="sidebarToggle" href="#!"><i class="fas fa-bars"></i></button>
     <!-- Navbar Search-->
     <form class="d-none d-md-inline-block form-inline ms-auto me-0 me-md-3 my-2 my-md-0">
       <div class="input-group">
-        <input class="form-control" type="text" placeholder="Search for..." aria-label="Search for..."
-          aria-describedby="btnNavbarSearch" />
+        <input class="form-control" type="text" placeholder="Search for..." aria-label="Search for..." aria-describedby="btnNavbarSearch" />
         <button class="btn btn-primary" id="btnNavbarSearch" type="button"><i class="fas fa-search"></i></button>
       </div>
     </form>
     <!-- Navbar-->
     <ul class="navbar-nav ms-auto ms-md-0 me-3 me-lg-4">
       <li class="nav-item dropdown">
-        <a class="nav-link dropdown-toggle" id="navbarDropdown" href="#" role="button" data-bs-toggle="dropdown"
-          aria-expanded="false"><i class="fas fa-user fa-fw"></i></a>
+        <a class="nav-link dropdown-toggle" id="navbarDropdown" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false"><i class="fas fa-user fa-fw"></i></a>
         <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
           <li><a class="dropdown-item" href="#!">Settings</a></li>
           <li><a class="dropdown-item" href="#!">Activity Log</a></li>
@@ -54,8 +51,7 @@
               Dashboard
             </a>
             <div class="sb-sidenav-menu-heading">Activity</div>
-            <a class="nav-link collapsed" href="#" data-bs-toggle="collapse" data-bs-target="#collapseLayouts"
-              aria-expanded="false" aria-controls="collapseLayouts">
+            <a class="nav-link collapsed" href="#" data-bs-toggle="collapse" data-bs-target="#collapseLayouts" aria-expanded="false" aria-controls="collapseLayouts">
               <div class="sb-nav-link-icon"><i class="fas fa-columns"></i></div>
               Admin
               <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
@@ -116,8 +112,7 @@
       </footer>
     </div>
   </div>
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"
-    crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>
   <script src="js/scripts.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.8.0/Chart.min.js" crossorigin="anonymous"></script>
   <script src="assets/demo/chart-area-demo.js"></script>
@@ -127,23 +122,42 @@
 
   <script>
     const pie = document.getElementById('pieChart');
+    let reports = <?php echo json_encode($reports) ?>;
+    console.log(reports);
+    let report_counts = [0, 0, 0, 0];
+
+    reports.forEach(report => {
+      if (report['type_report'] == 'Keresahan') {
+        report_counts[0] = report['count'];
+      } else if (report['type_report'] == 'Tamu') {
+        report_counts[1] = report['count'];
+      } else if (report['type_report'] == 'Perubahan Data') {
+        report_counts[2] = report['count'];
+      } else {
+        report_counts[3] = report['count'];
+      }
+      // console.log(report["type_report"]);
+    });
+
+    console.log(report_counts);
+
     new Chart(pie, {
       type: 'pie',
       data: {
-        labels: ['Red', 'Blue', 'Yellow', 'Green', 'Purple', 'Orange'],
+        labels: ['Keresahan', 'Tamu', 'Perubahan Data', 'Kegiatan'],
         datasets: [{
-          label: '# of Votes',
-          data: [12, 19, 3, 5, 2, 3],
+          label: 'Jumlah laporan',
+          data: report_counts,
           borderWidth: 1
         }]
       },
-      options: {
-        scales: {
-          y: {
-            beginAtZero: true
-          }
-        }
-      }
+      // options: {
+      //   scales: {
+      //     y: {
+      //       beginAtZero: true
+      //     }
+      //   }
+      // }
     });
   </script>
 
