@@ -131,7 +131,7 @@
                                         <td>{{$rsd->pendidikan}}</td>
                                         <td>{{$rsd->jenis_pekerjaan}}</td>
                                         <td>
-                                            <button type="button" class="btn btn-primary btn-sm" data-bs-toggle="modal" data-bs-target="#residentModal{{$rsd->nomor_kk}}">View Details
+                                            <button type="button" class="btn btn-primary btn-sm" data-bs-toggle="modal" data-bs-target="#residentModal{{$rsd->nomor_kk}}"><i class="fas fa-eye"></i>
                                             </button>
                                         </td>
                                     </tr>
