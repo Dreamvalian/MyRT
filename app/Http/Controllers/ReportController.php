@@ -52,7 +52,7 @@ class ReportController extends Controller
     {
         $report = reports::find($report_id);
         if ($report) {
-            $report->status = 'checked';
+            $report->status = 'Diterima';
             $report->save();
         }
         return redirect()->back()->with('success', 'Report checked successfully.');
@@ -62,7 +62,7 @@ class ReportController extends Controller
     {
         $report = reports::find($report_id);
         if ($report) {
-            $report->status = 'rejected';
+            $report->status = 'Ditolak';
             $report->save();
         }
         return redirect()->back()->with('success', 'Report rejected successfully.');

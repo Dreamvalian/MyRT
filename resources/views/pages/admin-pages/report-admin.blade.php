@@ -106,7 +106,7 @@
                                         <th>Type Report</th>
                                         <th>Date Created</th>
                                         <th>Actions</th>
-                                        <th>Actions</th>
+                                        <th>Status Laporan</th>
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -117,12 +117,10 @@
                                         <td>{{$rpt->type_report}}</td>
                                         <td>{{$rpt->date_start}}</td>
                                         <td>
-                                            <a href="#" class="btn btn-info btn-sm"><i class="fas fa-eye"></i></a>
-                                            <a href="#" class="btn btn-warning btn-sm"><i class="fas fa-edit"></i></a>
-                                            <a href="#" class="btn btn-danger btn-sm"><i class="fas fa-trash"></i></a>
-                                        </td>
-                                        <td>
-                                            @if (is_null($rpt->status))
+                                            <button type="button" class="btn btn-info btn-sm" data-bs-toggle="modal" data-bs-target="#reportModal{{$rpt->report_id}}">
+                                                <i class="fas fa-eye"></i>
+                                            </button>
+                                            @if ($rpt->status=='Menunggu Konfirmasi')
                                             <form action="{{ route('report.check', ['report_id' => $rpt->report_id]) }}" method="POST" style="display:inline;">
                                                 @csrf
                                                 <button type="submit" class="btn btn-success btn-sm"><i class="fas fa-check"></i></button>
@@ -131,13 +129,59 @@
                                                 @csrf
                                                 <button type="submit" class="btn btn-danger btn-sm"><i class="fas fa-times"></i></button>
                                             </form>
-                                            @else
+                                            @endif
+                                        </td>
+                                        <td>
                                             <span class="badge {{ $rpt->status == 'checked' ? 'bg-success' : 'bg-danger' }}">
                                                 {{ ucfirst($rpt->status) }}
                                             </span>
-                                            @endif
                                         </td>
                                     </tr>
+                                    <!-- Modal -->
+                                    <div class="modal fade" id="reportModal{{$rpt->report_id}}" tabindex="-1" aria-labelledby="reportModalLabel" aria-hidden="true">
+                                        <div class="modal-dialog modal-dialog-centered">
+                                            <div class="modal-content">
+                                                <div class="modal-header">
+                                                    <h5 class="modal-title" id="reportModalLabel">Detail Laporan</h5>
+
+                                                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                                </div>
+                                                <div class="modal-body">
+                                                    <div class="row">
+                                                        <div class="col-md-6">
+                                                            <label for="activity_id" class="form-label">Judul Laporan:</label>
+                                                            <input type="text" class="form-control" id="title" value="{{$rpt->title}}" readonly>
+                                                        </div>
+                                                        <div class="col-md-6">
+                                                            <label for="title" class="form-label">Deskripsi : </label>
+                                                            <input type="text" class="form-control" id="description" value="{{$rpt->description}}" readonly>
+                                                        </div>
+                                                        <div class="col-md-6">
+                                                            <label for="date_start" class="form-label">Tanggal Mulai:</label>
+                                                            <input type="text" class="form-control" id="date_start" value="{{$rpt->date_start}}" readonly>
+                                                        </div>
+                                                        <div class="col-md-6">
+                                                            <label for="date_start" class="form-label">Tanggal Selesai:</label>
+                                                            <input type="text" class="form-control" id="date_end" value="{{$rpt->date_end}}" readonly>
+                                                        </div>
+                                                        <div class="col-md-6">
+                                                            <label for="picture" class="form-label">Picture:</label>
+                                                            @if($rpt->picture)
+
+                                                            <img src="{{ asset('storage/' . $rpt->picture) }}" class="img-fluid" alt="Activity Picture">
+                                                            @else
+                                                            <p>No picture available</p>
+                                                            @endif
+                                                        </div>
+
+                                                    </div>
+                                                </div>
+                                                <div class="modal-footer">
+                                                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
                                     @endforeach
                                 </tbody>
                             </table>
@@ -146,6 +190,8 @@
                 </div>
             </main>
         </div>
+
+
 
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>
         <script src="js/scripts.js"></script>

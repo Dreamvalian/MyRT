@@ -21,7 +21,7 @@
     <!-- <x-service-banner /> -->
   </div>
   <div class="home-feature">
-    <x-home-feature>
+    <x-home-feature />
   </div>
 
 

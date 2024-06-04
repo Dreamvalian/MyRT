@@ -169,7 +169,7 @@
         </div>
         <div class="modal-body">
           <div class="card body">
-            <table class="table" id="datatablesSimple">
+            <table class="table" id="datatablesSimple2">
               <thead>
                 <tr>
                   <th>NIK</th>
