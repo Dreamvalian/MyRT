@@ -78,7 +78,7 @@
                 </div>
                 <div class="sb-sidenav-footer">
                     <div class="small">Logged in as:</div>
-                    MyRT
+                    {{Auth::user()->nama}}
                 </div>
             </nav>
         </div>
@@ -156,6 +156,7 @@
                                                             <label for="title" class="form-label">Deskripsi : </label>
                                                             <input type="text" class="form-control" id="description" value="{{$rpt->description}}" readonly>
                                                         </div>
+                                                        @if (!is_null($rpt->date_start))
                                                         <div class="col-md-6">
                                                             <label for="date_start" class="form-label">Tanggal Mulai:</label>
                                                             <input type="text" class="form-control" id="date_start" value="{{$rpt->date_start}}" readonly>
@@ -164,9 +165,10 @@
                                                             <label for="date_start" class="form-label">Tanggal Selesai:</label>
                                                             <input type="text" class="form-control" id="date_end" value="{{$rpt->date_end}}" readonly>
                                                         </div>
+                                                        @endif
                                                         <div class="col-md-6">
                                                             <label for="picture" class="form-label">Picture:</label>
-                                                            @if($rpt->picture)
+                                                            @if($rpt->picture != 'default.png')
 
                                                             <img src="{{ asset('storage/' . $rpt->picture) }}" class="img-fluid" alt="Activity Picture">
                                                             @else

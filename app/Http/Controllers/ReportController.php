@@ -35,15 +35,27 @@ class ReportController extends Controller
             }
         }
 
-        Reports::create([
-            'type_report' => $request->type_report,
-            'title' => $request->title,
-            'description' => $request->description,
-            'date_start' => $request->date_start,
-            'date_end' => $request->date_end,
-            'picture' => $imagePath,
-            'user_id' => Auth::id(),
-        ]);
+
+        if (is_null($request->date_start)) {
+            Reports::create([
+                'type_report' => $request->type_report,
+                'title' => $request->title,
+                'description' => $request->description,
+                'picture' => $imagePath,
+                'user_id' => Auth::id(),
+            ]);
+        } else {
+            Reports::create([
+                'type_report' => $request->type_report,
+                'title' => $request->title,
+                'description' => $request->description,
+                'date_start' => $request->date_start,
+                'date_end' => $request->date_end,
+                'picture' => $imagePath,
+                'user_id' => Auth::id(),
+            ]);
+        }
+
 
         return redirect('home-user')->with('success', 'Activity created successfully');
     }

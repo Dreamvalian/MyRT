@@ -68,7 +68,7 @@
         </div>
         <div class="sb-sidenav-footer">
           <div class="small">Logged in as:</div>
-          MyRT
+          {{Auth::user()->nama}}
         </div>
       </nav>
     </div>
