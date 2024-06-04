@@ -81,26 +81,24 @@
                         <li class="breadcrumb-item active">Data Admin</li>
                     </ol>
                     <div class="card mb-4">
-                        <div class="card-header d-flex justify-content-between align-items-center">
-                            <span><i class="fas fa-table me-1"></i> Data Penduduk</span>
-                            <button class="btn btn-secondary" id="uploadModalButton" data-bs-toggle="modal" data-bs-target="#uploadModal">
-                                <i class="fas fa-file-import"></i> Import CSV
-                            </button>
+                        <div class="card-header">
+                            <i class="fas fa-table me-1"></i>
+                            Data Penduduk
                         </div>
                         <div class="card-body">
                             <table id="datatablesSimple1" class="table">
                                 <thead>
                                     <tr>
                                         <th>NIK</th>
-                                        <th>NOMOR_KK</th>
+                                        <th>Nomor Kartu Keluarga</th>
                                         <th>Nama</th>
                                         <th>Alamat</th>
-                                        <th>jenis_kelamin</th>
-                                        <th>tempat_lahir</th>
-                                        <th>tanggal_lahir</th>
-                                        <th>agama</th>
-                                        <th>pendidikan</th>
-                                        <th>jenis_pekerjaan</th>
+                                        <th>Jenis Kelamin</th>
+                                        <th>Tempat Lahir</th>
+                                        <th>Tanggal Lahir</th>
+                                        <th>Agama</th>
+                                        <th>Pendidikan</th>
+                                        <th>Jenis Pekerjaan</th>
                                         <th>Actions</th>
                                     </tr>
                                 </thead>
@@ -116,7 +114,6 @@
                                         <th>agama</th>
                                         <th>pendidikan</th>
                                         <th>jenis_pekerjaan</th>
-                                        <th>status perkawinan</th>
                                         <th>Actions</th>
                                     </tr>
                                 </tfoot>
@@ -133,9 +130,9 @@
                                         <td>{{$rsd->agama}}</td>
                                         <td>{{$rsd->pendidikan}}</td>
                                         <td>{{$rsd->jenis_pekerjaan}}</td>
-                                        <td>{{$rsd->status_perkawinan}}</td>
                                         <td>
-                                            <button type="button" class="btn btn-primary btn-sm" data-bs-toggle="modal" data-bs-target="#residentModal{{$rsd->nomor_kk}}">View Details</button>
+                                            <button type="button" class="btn btn-primary btn-sm" data-bs-toggle="modal" data-bs-target="#residentModal{{$rsd->nomor_kk}}">View Details
+                                            </button>
                                         </td>
                                     </tr>
                                     @endforeach
@@ -161,31 +158,7 @@
         </div>
     </div>
 
-    <!-- Modal for Import CSV -->
-
-<div class="modal fade" id="uploadModal" tabindex="-1" aria-labelledby="uploadModalLabel" aria-hidden="true">
-    <div class="modal-dialog">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title" id="uploadModalLabel">Upload CSV File</h5>
-                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-            </div>
-            <div class="modal-body">
-                <form action="{{ route('import.csv') }}" method="POST" enctype="multipart/form-data">
-                    @csrf
-                    <div class="mb-3">
-                        <label for="csvFile" class="form-label">Choose CSV file</label>
-                        <input class="form-control" type="file" id="csvFile" name="csvFile" accept=".csv" required>
-                    </div>
-                    <button type="submit" class="btn btn-primary">Upload</button>
-                </form>
-            </div>
-        </div>
-    </div>
-</div>
-
-
-    <!-- Modal for Resident Details -->
+    <!-- Modal -->
     @foreach ($residents as $rsd)
     <div class="modal fade" id="residentModal{{$rsd->nomor_kk}}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div class="modal-dialog modal-lg">
@@ -209,7 +182,6 @@
                                     <th>agama</th>
                                     <th>pendidikan</th>
                                     <th>jenis_pekerjaan</th>
-                                    <th>status perkawinan</th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -226,7 +198,6 @@
                                     <td>{{$resident->agama}}</td>
                                     <td>{{$resident->pendidikan}}</td>
                                     <td>{{$resident->jenis_pekerjaan}}</td>
-                                    <td>{{$rsd->status_perkawinan}}</td>
                                 </tr>
                                 @endif
                                 @endforeach
@@ -236,7 +207,8 @@
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                    <button type="button" class="btn btn-primary" onclick="exportToCSV('residentModal{{$rsd->nomor_kk}}')">Export CSV</button>
+                    <button type="button" class="btn btn-primary" onclick="exportToCSV('residentModal{{$rsd->nomor_kk}}')">Export
+                        CSV</button>
                 </div>
             </div>
         </div>
@@ -244,16 +216,12 @@
     @endforeach
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>
-    <script src="js/datatables-simple-demo.js"></script>
     <script src="js/scripts.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.8.0/Chart.min.js" crossorigin="anonymous"></script>
     <script src="assets/demo/chart-area-demo.js"></script>
     <script src="assets/demo/chart-bar-demo.js"></script>
-    <script src="Editor-2.3.2/js/dataTables.editor.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/simple-datatables@7.1.2/dist/umd/simple-datatables.min.js" crossorigin="anonymous"></script>
-    <script src="https://cdn.datatables.net/v/dt/jqc-1.12.4/dt-2.0.7/b-3.0.2/sl-2.0.2/datatables.min.js"></script>
-    <script src="Editor-2.3.2/js/dataTables.editor.js"></script>
-
+    <script src="js/datatables-simple-demo.js"></script>
 </body>
 
 </html>
