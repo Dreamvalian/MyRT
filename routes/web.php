@@ -40,6 +40,10 @@ Route::post('/report/reject/{report_id}', [ReportController::class, 'reject'])->
 Route::post('/add-report-user', [ReportController::class, 'store']);
 
 
+Route::post('/import-csv', [ResidentsController::class, 'importCSV'])->name('import.csv');
+
+
+
 
 Route::group(['middleware' => ['auth']], function () {
     Route::group(['middleware' => ['isAdmin:ADMIN']], function () {
@@ -48,6 +52,7 @@ Route::group(['middleware' => ['auth']], function () {
     });
     Route::group(['middleware' => ['isAdmin:USER']], function () {
         // Route::resource('user', UserController::class);
+        // dd(Auth::user()->nomor_kk);
         Route::get('/home-user', [UserController::class, 'index'])->name('home-user');
     });
 });
@@ -88,6 +93,12 @@ Route::get('/add-activity-admin', function () {
 Route::get('/home-users', function () {
     return view('pages.user-pages.home-user');
 });
+Route::get('/home-admins', function () {
+    return view('pages.admin-pages.home-admin');
+});
 Route::get('/add-report-user', function () {
     return view('pages.user-pages.add-report-user');
+});
+Route::get('/charts', function () {
+    return view('charts');
 });

@@ -1,8 +1,10 @@
 <?php
 
 namespace App\Http\Controllers;
+
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
 use App\Models\Reports;
 
 class ReportController extends Controller
@@ -26,8 +28,11 @@ class ReportController extends Controller
         // Handle file upload
         $imagePath = 'default.png';
         if ($request->hasFile('picture')) {
-            $image = $request->file('picture');
-            $imagePath = $image->store('images', 'public'); // Menyimpan file ke direktori 'public/images'
+            // Menyimpan file ke direktori 'public/images'
+            $imagePath = $request->file('picture')->store('report_images', 'public');
+            if (is_null(Storage::url($imagePath))) {
+                dd($imagePath);
+            }
         }
 
         Reports::create([
@@ -37,7 +42,6 @@ class ReportController extends Controller
             'date_start' => $request->date_start,
             'date_end' => $request->date_end,
             'picture' => $imagePath,
-            'status' => null,
             'user_id' => Auth::id(),
         ]);
 

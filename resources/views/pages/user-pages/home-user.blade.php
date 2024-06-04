@@ -56,7 +56,7 @@
         <div class="sb-sidenav-menu">
           <div class="nav">
             <div class="sb-sidenav-menu-heading">Core</div>
-            <a class="nav-link" href="{{ url('home-users') }}">
+            <a class="nav-link" href="{{ url('home-user') }}">
               <div class="sb-nav-link-icon"><i class="fas fa-tachometer-alt"></i></div>
               Dashboard
             </a>
@@ -73,7 +73,7 @@
         </div>
         <div class="sb-sidenav-footer">
           <div class="small">Logged in as:</div>
-          MyRT
+          {{Auth::user()->nama}}
         </div>
       </nav>
     </div>
@@ -82,7 +82,7 @@
         <div class="container-fluid px-4">
           <h1 class="mt-4">Data Keluarga</h1>
           <ol class="breadcrumb mb-4">
-            <li class="breadcrumb-item active">Keluarga Bapak/Ibu ...</li>
+            <li class="breadcrumb-item active">Keluarga Bapak/Ibu <b>{{Auth::user()->nama}}</b></li>
           </ol>
           <div class="card mb-4">
             <div class="card-header">
@@ -90,113 +90,146 @@
               Data Keluarga
             </div>
             <div class="card-body">
-              <table id="datatablesSimple">
+              <table id="datatablesSimple1">
                 <thead>
                   <tr>
-                    <th>Name</th>
-                    <th>Position</th>
-                    <th>Office</th>
-                    <th>Age</th>
-                    <th>Start date</th>
-                    <th>Salary</th>
+                    <th>NIK</th>
+                    <th>Nomor Kartu Keluarga</th>
+                    <th>Nama Lengkap</th>
+                    <th>Alamat</th>
+                    <th>Jenis Kelamin</th>
+                    <th>Tempat Lahir</th>
+                    <th>Tanggal Lahir</th>
+                    <th>Agama</th>
+                    <th>Pendidikan</th>
+                    <th>Jenis Pekerjaan</th>
+                    <th>Status Perkawinan</th>
                   </tr>
                 </thead>
                 <tfoot>
                   <tr>
-                    <th>Name</th>
-                    <th>Position</th>
-                    <th>Office</th>
-                    <th>Age</th>
-                    <th>Start date</th>
-                    <th>Salary</th>
+                    <th>NIK</th>
+                    <th>Nomor Kartu Keluarga</th>
+                    <th>Nama Lengkap</th>
+                    <th>Alamat</th>
+                    <th>Jenis Kelamin</th>
+                    <th>Tempat Lahir</th>
+                    <th>Tanggal Lahir</th>
+                    <th>Agama</th>
+                    <th>Pendidikan</th>
+                    <th>Jenis Pekerjaan</th>
+                    <th>Status Perkawinan</th>
                   </tr>
                 </tfoot>
                 <tbody>
-                  <tr>
-                    <td>Tiger Nixon</td>
-                    <td>System Architect</td>
-                    <td>Edinburgh</td>
-                    <td>61</td>
-                    <td>2011/04/25</td>
-                    <td>$320,800</td>
-                  </tr>
+
+                  @if (isset($family))
+
+            @foreach ($family as $family_array)
+        @foreach ($family_array as $family_data)
+      <tr>
+      <td>{{$family_data->nik}}</td>
+      <td>{{$family_data->nomor_kk}}</td>
+      <td>{{$family_data->nama_lengkap}}</td>
+      <td>{{$family_data->alamat}}</td>
+      <td>{{$family_data->jenis_kelamin}}</td>
+      <td>{{$family_data->tempat_lahir}}</td>
+      <td>{{$family_data->tanggal_lahir}}</td>
+      <td>{{$family_data->agama}}</td>
+      <td>{{$family_data->pendidikan}}</td>
+      <td>{{$family_data->jenis_pekerjaan}}</td>
+      <td>{{$family_data->status_perkawinan}}</td>
+      </tr>
+    @endforeach
+
+      @endforeach
+          @else
+        <tr>
+        <td>TIDAK DITEMUKAN</td>
+        </tr>
+      @endif
                 </tbody>
               </table>
             </div>
           </div>
+        </div>
+
+        <div class="container-fluid px-4">
+          <h1 class="mt-4">Data Tamu</h1>
+          <ol class="breadcrumb mb-4">
+            <li class="breadcrumb-item active">Daftar Tamu Anda</li>
+          </ol>
           <div class="card mb-4">
             <div class="card-header">
               <i class="fas fa-table me-1"></i>
               Data Tamu
             </div>
             <div class="card-body">
-              <table id="datatablesSimple">
+              <table id="datatablesSimple2">
                 <thead>
                   <tr>
-                    <th>Name</th>
-                    <th>Position</th>
-                    <th>Office</th>
-                    <th>Age</th>
-                    <th>Start date</th>
-                    <th>Salary</th>
+                    <th>NIK</th>
+                    <th>Nomor Kartu Keluarga</th>
+                    <th>Nama Lengkap</th>
+                    <th>Alamat</th>
+                    <th>Jenis Kelamin</th>
+                    <th>Tempat Lahir</th>
+                    <th>Tanggal Lahir</th>
+                    <th>Agama</th>
+                    <th>Pendidikan</th>
+                    <th>Jenis Pekerjaan</th>
+                    <th>Status Perkawinan</th>
                   </tr>
                 </thead>
                 <tfoot>
                   <tr>
-                    <th>Name</th>
-                    <th>Position</th>
-                    <th>Office</th>
-                    <th>Age</th>
-                    <th>Start date</th>
-                    <th>Salary</th>
+                    <th>NIK</th>
+                    <th>Nomor Kartu Keluarga</th>
+                    <th>Nama Lengkap</th>
+                    <th>Alamat</th>
+                    <th>Jenis Kelamin</th>
+                    <th>Tempat Lahir</th>
+                    <th>Tanggal Lahir</th>
+                    <th>Agama</th>
+                    <th>Pendidikan</th>
+                    <th>Jenis Pekerjaan</th>
+                    <th>Status Perkawinan</th>
                   </tr>
                 </tfoot>
                 <tbody>
-                  <tr>
-                    <td>Tiger Nixon</td>
-                    <td>System Architect</td>
-                    <td>Edinburgh</td>
-                    <td>61</td>
-                    <td>2011/04/25</td>
-                    <td>$320,800</td>
-                  </tr>
-                  <tr>
-                    <td>Garrett Winters</td>
-                    <td>Accountant</td>
-                    <td>Tokyo</td>
-                    <td>63</td>
-                    <td>2011/07/25</td>
-                    <td>$170,750</td>
-                  </tr>
-                  <tr>
-                    <td>Ashton Cox</td>
-                    <td>Junior Technical Author</td>
-                    <td>San Francisco</td>
-                    <td>66</td>
-                    <td>2009/01/12</td>
-                    <td>$86,000</td>
-                  </tr>
-                  <tr>
-                    <td>Cedric Kelly</td>
-                    <td>Senior Javascript Developer</td>
-                    <td>Edinburgh</td>
-                    <td>22</td>
-                    <td>2012/03/29</td>
-                    <td>$433,060</td>
-                  </tr>
-                  <tr>
-                    <td>Airi Satou</td>
-                    <td>Accountant</td>
-                    <td>Tokyo</td>
-                    <td>33</td>
-                    <td>2008/11/28</td>
-                    <td>$162,700</td>
-                  </tr>
+
+                  @if (isset($visitors))
+
+                  @foreach ($visitors as $visitor_array)
+              @foreach ($visitor_array as $visitor_data)
+            <tr>
+            <!-- <td>{{$visitor_data->nik}}</td>
+          <td>{{$visitor_data->nomor_kk}}</td>
+          <td>{{$visitor_data->nama_lengkap}}</td>
+          <td>{{$visitor_data->alamat}}</td>
+          <td>{{$visitor_data->jenis_kelamin}}</td>
+          <td>{{$visitor_data->tempat_lahir}}</td>
+          <td>{{$visitor_data->tanggal_lahir}}</td>
+          <td>{{$visitor_data->agama}}</td>
+          <td>{{$visitor_data->pendidikan}}</td>
+          <td>{{$visitor_data->jenis_pekerjaan}}</td>
+          <td>{{$visitor_data->status_perkawinan}}</td> -->
+            </tr>
+        @endforeach
+
+          @endforeach
+          @else
+        <tr>
+        <td>TIDAK DITEMUKAN</td>
+        </tr>
+      @endif
                 </tbody>
               </table>
             </div>
           </div>
         </div>
+
+
       </main>
       <footer class="py-4 bg-light mt-auto">
         <div class="container-fluid px-4">
