@@ -10,15 +10,9 @@
     </button>
     <div class="collapse navbar-collapse" id="navbarNav">
       <ul class="navbar-nav ml-auto">
-        <li class="nav-item">
+        <!-- <li class="nav-item">
           <a class="nav-link mt-2" href="#">About</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link mt-2" href="#">Laporan</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link mt-2" href="#">Kegiatan</a>
-        </li>
+        </li> -->
         <li class="nav-item">
           <a class="nav-link" href="/login">
             <button class="btn btn-primary">Sign In</button>

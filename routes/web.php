@@ -102,6 +102,6 @@ Route::get('/add-activity-admin', function () {
 // Route::get('/add-report-user', function () {
 //     return view('pages.user-pages.add-report-user');
 // });
-// Route::get('/charts', function () {
-//     return view('charts');
-// });
+Route::get('/home', function () {
+    return view('home');
+});
