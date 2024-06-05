@@ -32,7 +32,7 @@ Route::get('/logout', [LogoutController::class, 'logout'])->name('logout');
 
 
 
-Route::post('/import-csv', [ResidentsController::class, 'importCSV'])->name('import.csv');
+
 
 
 
@@ -54,6 +54,8 @@ Route::group(['middleware' => ['auth']], function () {
         Route::post('/report/reject/{report_id}', [ReportController::class, 'reject'])->name('report.reject');
         /*Chart*/
         Route::get('/charts', [ChartController::class, 'index'])->name('charts');
+        /*resident*/
+        Route::post('/add-resident', [ResidentsController::class, 'store'])->name('add-resident');
     });
     Route::group(['middleware' => ['isAdmin:USER']], function () {
         // Route::resource('user', UserController::class);
@@ -106,6 +108,6 @@ Route::get('/add-activity-admin', function () {
 // Route::get('/add-report-user', function () {
 //     return view('pages.user-pages.add-report-user');
 // });
-// Route::get('/charts', function () {
-//     return view('charts');
-// });
+Route::get('/home', function () {
+    return view('home');
+});

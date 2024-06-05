@@ -7,21 +7,23 @@
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
   <meta name="description" content="" />
   <meta name="author" content="" />
-  <title>Admin - Charts</title>
+  <title>Dashboard - MyRT</title>
+  <link href="https://cdn.jsdelivr.net/npm/simple-datatables@7.1.2/dist/style.min.css" rel="stylesheet" />
   <link href="css/styles.css" rel="stylesheet" />
   <script src="https://use.fontawesome.com/releases/v6.3.0/js/all.js" crossorigin="anonymous"></script>
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 </head>
 
 <body class="sb-nav-fixed">
   <nav class="sb-topnav navbar navbar-expand navbar-dark bg-dark">
     <!-- Navbar Brand-->
-    <a class="navbar-brand ps-3" href="/">MyRT</a>
+    <a class="navbar-brand ps-3" href="{{ url('home-admin') }}">MyRT</a>
     <!-- Sidebar Toggle-->
     <button class="btn btn-link btn-sm order-1 order-lg-0 me-4 me-lg-0" id="sidebarToggle" href="#!"><i class="fas fa-bars"></i></button>
     <!-- Navbar Search-->
     <form class="d-none d-md-inline-block form-inline ms-auto me-0 me-md-3 my-2 my-md-0">
       <div class="input-group">
-        <input class="form-control" type="text" placeholder="Search for..." aria-label="Search for..." aria-describedby="btnNavbarSearch" />
+        <input class="form-control" id="tableSearch" type="text" placeholder="Search for..." aria-label="Search for..." aria-describedby="btnNavbarSearch" />
         <button class="btn btn-primary" id="btnNavbarSearch" type="button"><i class="fas fa-search"></i></button>
       </div>
     </form>
@@ -35,7 +37,7 @@
           <li>
             <hr class="dropdown-divider" />
           </li>
-          <li><a class="dropdown-item" href="#!">Logout</a></li>
+          <li><a class="dropdown-item" href="{{route('logout')}}">Logout</a></li>
         </ul>
       </li>
     </ul>
@@ -62,10 +64,6 @@
                 <a class="nav-link" href="{{ url('activity-admin') }}">Activity Admin</a>
               </nav>
             </div>
-            <a class="nav-link" href="charts.html">
-              <div class="sb-nav-link-icon"><i class="fas fa-chart-area"></i></div>
-              Charts
-            </a>
           </div>
         </div>
         <div class="sb-sidenav-footer">
@@ -74,34 +72,81 @@
         </div>
       </nav>
     </div>
+    <!-- Dashboard -->
     <div id="layoutSidenav_content">
       <main>
         <div class="container-fluid px-4">
-          <h1 class="mt-4">Charts</h1>
+          <h1 class="mt-4">Dashboard</h1>
           <ol class="breadcrumb mb-4">
-            <li class="breadcrumb-item"><a href="index.html">Dashboard</a></li>
-            <li class="breadcrumb-item active">Charts</li>
+            <li class="breadcrumb-item active">Data Admin</li>
           </ol>
           <div class="card mb-4">
-            <div class="row">
-              <div class="col-lg-4">
-                <div class="card mb-4">
-                  <div class="card-header">
-                    <i class="fas fa-chart-pie me-1"></i>
-                    <div>
-                      <canvas id="pieChart"></canvas>
-                    </div>
-                  </div>
-                  <div class="card-body"><canvas id="myPieChart" width="100%" height="50"></canvas></div>
-                  <div class="card-footer small text-muted">Updated yesterday at 11:59 PM</div>
-                </div>
-              </div>
+            <div class="card-header">
+              <i class="fas fa-table me-1"></i>
+              Data Penduduk
             </div>
+            <div class="card-body">
+              <table id="datatablesSimple1" class="table">
+                <thead>
+                  <tr>
+                    <th>NIK</th>
+                    <th>Nomor Kartu Keluarga</th>
+                    <th>Nama</th>
+                    <th>Alamat</th>
+                    <th>Jenis Kelamin</th>
+                    <th>Tempat Lahir</th>
+                    <th>Tanggal Lahir</th>
+                    <th>Agama</th>
+                    <th>Pendidikan</th>
+                    <th>Jenis Pekerjaan</th>
+                    <th>Actions</th>
+                  </tr>
+                </thead>
+                <tfoot>
+                  <tr>
+                    <th>NIK</th>
+                    <th>NOMOR_KK</th>
+                    <th>Nama</th>
+                    <th>Alamat</th>
+                    <th>jenis_kelamin</th>
+                    <th>tempat_lahir</th>
+                    <th>tanggal_lahir</th>
+                    <th>agama</th>
+                    <th>pendidikan</th>
+                    <th>jenis_pekerjaan</th>
+                    <th>Actions</th>
+                  </tr>
+                </tfoot>
+                <tbody>
+                  @foreach ($residents as $rsd)
+                  <tr>
+                    <td>{{$rsd->nik}}</td>
+                    <td>{{$rsd->nomor_kk}}</td>
+                    <td>{{$rsd->nama_lengkap}}</td>
+                    <td>{{$rsd->alamat}}</td>
+                    <td>{{$rsd->jenis_kelamin}}</td>
+                    <td>{{$rsd->tempat_lahir}}</td>
+                    <td>{{$rsd->tanggal_lahir}}</td>
+                    <td>{{$rsd->agama}}</td>
+                    <td>{{$rsd->pendidikan}}</td>
+                    <td>{{$rsd->jenis_pekerjaan}}</td>
+                    <td>
+                      <button type="button" class="btn btn-primary btn-sm" data-bs-toggle="modal" data-bs-target="#residentModal{{$rsd->nomor_kk}}">View Details
+                      </button>
+                    </td>
+                  </tr>
+                  @endforeach
+                </tbody>
+              </table>
+            </div>
+          </div>
+          <a href="#" class="btn btn-success mb-4"><i class="fas fa-plus"></i> Add New Data Penduduk</a>
+        </div>
       </main>
       <footer class="py-4 bg-light mt-auto">
         <div class="container-fluid px-4">
           <div class="d-flex align-items-center justify-content-between small">
-            <div class="text-muted">Copyright &copy; MyRT</div>
+            <div class="text-muted">Copyright &copy; MyRT 2024</div>
             <div>
               <a href="#">Privacy Policy</a>
               &middot;
@@ -112,55 +157,72 @@
       </footer>
     </div>
   </div>
+
+  <!-- Modal -->
+  @foreach ($residents as $rsd)
+  <div class="modal fade" id="residentModal{{$rsd->nomor_kk}}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">Detail Keluarga - {{$rsd->nama_lengkap}}</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <div class="card body">
+            <table class="table" id="datatablesSimple">
+              <thead>
+                <tr>
+                  <th>NIK</th>
+                  <th>NOMOR_KK</th>
+                  <th>Nama</th>
+                  <th>Alamat</th>
+                  <th>jenis_kelamin</th>
+                  <th>tempat_lahir</th>
+                  <th>tanggal_lahir</th>
+                  <th>agama</th>
+                  <th>pendidikan</th>
+                  <th>jenis_pekerjaan</th>
+                </tr>
+              </thead>
+              <tbody>
+                @foreach ($residents as $resident)
+                @if ($resident->nomor_kk === $rsd->nomor_kk)
+                <tr>
+                  <td>{{$resident->nik}}</td>
+                  <td>{{$resident->nomor_kk}}</td>
+                  <td>{{$resident->nama_lengkap}}</td>
+                  <td>{{$resident->alamat}}</td>
+                  <td>{{$resident->jenis_kelamin}}</td>
+                  <td>{{$resident->tempat_lahir}}</td>
+                  <td>{{$resident->tanggal_lahir}}</td>
+                  <td>{{$resident->agama}}</td>
+                  <td>{{$resident->pendidikan}}</td>
+                  <td>{{$resident->jenis_pekerjaan}}</td>
+                </tr>
+                @endif
+                @endforeach
+              </tbody>
+            </table>
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+          <button type="button" class="btn btn-primary" onclick="exportToCSV('residentModal{{$rsd->nomor_kk}}')">Export
+            CSV</button>
+        </div>
+      </div>
+    </div>
+  </div>
+  @endforeach
+
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>
-  <script src="js/scripts.js"></script>
+
   <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.8.0/Chart.min.js" crossorigin="anonymous"></script>
   <script src="assets/demo/chart-area-demo.js"></script>
   <script src="assets/demo/chart-bar-demo.js"></script>
-  <script src="assets/demo/chart-pie-demo.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-
-  <script>
-    const pie = document.getElementById('pieChart');
-    let reports = <?php echo json_encode($reports) ?>;
-    console.log(reports);
-    let report_counts = [0, 0, 0, 0];
-
-    reports.forEach(report => {
-      if (report['type_report'] == 'Keresahan') {
-        report_counts[0] = report['count'];
-      } else if (report['type_report'] == 'Tamu') {
-        report_counts[1] = report['count'];
-      } else if (report['type_report'] == 'Perubahan Data') {
-        report_counts[2] = report['count'];
-      } else {
-        report_counts[3] = report['count'];
-      }
-      // console.log(report["type_report"]);
-    });
-
-    console.log(report_counts);
-
-    new Chart(pie, {
-      type: 'pie',
-      data: {
-        labels: ['Keresahan', 'Tamu', 'Perubahan Data', 'Kegiatan'],
-        datasets: [{
-          label: 'Jumlah laporan',
-          data: report_counts,
-          borderWidth: 1
-        }]
-      },
-      // options: {
-      //   scales: {
-      //     y: {
-      //       beginAtZero: true
-      //     }
-      //   }
-      // }
-    });
-  </script>
-
+  <script src="https://cdn.jsdelivr.net/npm/simple-datatables@7.1.2/dist/umd/simple-datatables.min.js" crossorigin="anonymous"></script>
+  <script src="js/datatables-simple-demo.js"></script>
+  <script src="js/scripts.js"></script>
 </body>
 
 </html>

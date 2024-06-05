@@ -4,8 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Residents;
-use Illuminate\Support\Facades\DB;
-use Illuminate\Support\Facades\Validator;
+use Illuminate\Support\Facades\Auth;
 
 class ResidentsController extends Controller
 {
@@ -20,37 +19,37 @@ class ResidentsController extends Controller
         return view('pages.admin-pages.add-resident-admin');
     }
 
+
     public function store(Request $request)
     {
+        // dd(Residents::where('nik', $request->nik)->exists());
+        if (Residents::where('nik', $request->nik)->exists()) {
+            return redirect('home-admin')->withErrors(['create_error'=>'NIK is already exist !']);
+        } else {
+            Residents::create([
+                'nik' => $request['nik'],
+                'nomor_kk' => $request['nomor_kk'],
+                'nama_lengkap' => $request['nama_lengkap'],
+                'alamat' => $request['alamat'],
+                'jenis_kelamin' => $request['jenis_kelamin'],
+                'tempat_lahir' => $request['tempat_lahir'],
+                'tanggal_lahir' => $request['tanggal_lahir'],
+                'agama' => $request['agama'],
+                'pendidikan' => $request['pendidikan'],
+                'jenis_pekerjaan' => $request['jenis_pekerjaan'],
+                'status_perkawinan' => $request['status_perkawinan']
+            ]);
 
-        $input = $request->all();
-        Residents::create($input);
-
-        return redirect('home-admin')->with('success', 'Resident created successfully');
+            return redirect()->back()->with('success', 'Resident added successfully.');
+        }
     }
 
-
-    // Method untuk menangani impor CSV
-    public function importCSV(Request $request)
+    public function logout(Request $request)
     {
-        $validator = Validator::make($request->all(), [
-            'csvFile' => 'required|mimes:csv,txt',
-        ]);
+        Auth::logout();
+        $request->session()->invalidate();
+        $request->session()->regenerateToken();
 
-        if ($validator->fails()) {
-            return response()->json(['error' => $validator->errors()->first()]);
-        }
-
-        if ($request->hasFile('csvFile')) {
-            $file = $request->file('csvFile');
-            $fileName = time() . '_' . $file->getClientOriginalName();
-            $filePath = $file->storeAs('csv', $fileName);
-
-            // Di sini Anda dapat melakukan pemrosesan tambahan jika diperlukan, misalnya membaca file CSV dan memasukkan datanya ke dalam database.
-
-            return redirect()->route('home-admin')->with('success', 'CSV file has been imported successfully.');
-        }
-
-        return response()->json(['error' => 'File not found.']);
+        return redirect('/login');
     }
 }
