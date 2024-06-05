@@ -11,24 +11,18 @@
     type="text/css" />
   <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
 </head>
-<style>
-  .home-section>* {
-    margin-bottom: 4rem;
-  }
-</style>
 
 <body>
   <!-- Navigation -->
   <x-navbar />
-  <div class="home-section">
-    <x-hero-section class="mb-5" />
-    <x-icons-grid class="mb-5" />
-    <!-- <x-image-showcase class="mb-5" /> -->
-    <x-testimonials class="mb-5" />
-    <x-cta class="mb-5" />
-  </div>
-  <x-footer />
 
+  <x-hero-section class="mb-5" />
+  <x-icons-grid class="mb-5 mt-5" />
+  <x-image-showcase class="mb-5" />
+  <x-testimonials class="mb-5" />
+  <x-cta class="mb-5" />
+
+  <x-footer class="mb-5" />
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>

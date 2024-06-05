@@ -4,40 +4,20 @@
   type="text/css" />
 <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
 
-<section class="showcase py-5">
-  <div class="container-fluid p-0">
-    <div class="row g-0">
-      <div class="col-lg-6 order-lg-2 text-white showcase-img"
-        style="background-image: url('{{ asset('images/bg-showcase-1.jpg') }}')"></div>
-      <div class="col-lg-6 order-lg-1 my-auto showcase-text">
-        <h2>Fully Responsive Design</h2>
-        <p class="lead mb-0">
-          When you use a theme created by Start Bootstrap, you know that the theme will look great on any device,
-          whether it's a phone, tablet, or desktop the page will behave responsively!
-        </p>
-      </div>
+<section class="neighborhood-management-service" id="neighborhood-management-section">
+  <div class="row align-items-center">
+    <div class="col-12 col-lg-7 text-center flex-item" data-aos="fade-right">
+      <img src="{{ asset('images/gallery/3.jpg') }}" alt="" class="img-fluid">
     </div>
-    <div class="row g-0">
-      <div class="col-lg-6 text-white showcase-img"
-        style="background-image: url('{{ asset('images/bg-showcase-2.jpg') }}')"></div>
-      <div class="col-lg-6 my-auto showcase-text">
-        <h2>Updated For Bootstrap 5</h2>
-        <p class="lead mb-0">
-          Newly improved, and full of great utility classes, Bootstrap 5 is leading the way in mobile responsive
-          web development! All of the themes on Start Bootstrap are now using Bootstrap 5!
-        </p>
+    <div class="col-12 col-lg-5 flex-item" data-aos="fade-left">
+      <h3 class="m-0">Efficient Neighborhood Management<br>For a Better Community.</h3>
+      <div class="col-lg-9 col-xl-8 p-0">
+        <p class="py-4 m-0 text-muted">Our system is designed to streamline neighborhood management, ensuring smooth
+          communication and efficient operations.</p>
+        <p class="pb-2 font-weight-medium text-muted">With our tools, managing community activities and resources
+          becomes easier and more effective.</p>
       </div>
-    </div>
-    <div class="row g-0">
-      <div class="col-lg-6 order-lg-2 text-white showcase-img"
-        style="background-image: url('{{ asset('images/bg-showcase-3.jpg') }}')"></div>
-      <div class="col-lg-6 order-lg-1 my-auto showcase-text">
-        <h2>Easy to Use & Customize</h2>
-        <p class="lead mb-0">
-          Landing Page is just HTML and CSS with a splash of SCSS for users who demand some deeper customization
-          options. Out of the box, just add your content and images, and your new landing page will be ready to go!
-        </p>
-      </div>
+      <button class="btn btn-info">Read more</button>
     </div>
   </div>
 </section>
