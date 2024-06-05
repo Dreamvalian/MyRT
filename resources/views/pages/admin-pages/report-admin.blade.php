@@ -74,6 +74,10 @@
                                 <a class="nav-link" href="{{ url('activity-admin') }}">Activity Admin</a>
                             </nav>
                         </div>
+                        <a class="nav-link" href="{{url('charts')}}">
+                            <div class="sb-nav-link-icon"><i class="fas fa-chart-area"></i></div>
+                            Charts
+                        </a>
                     </div>
                 </div>
                 <div class="sb-sidenav-footer">
@@ -134,7 +138,7 @@
                                             @endif
                                         </td>
                                         <td>
-                                            <span class="badge {{ $rpt->status == 'checked' ? 'bg-success' : 'bg-danger' }}">
+                                            <span class="badge {{ $rpt->status == 'Diterima' ? 'bg-success' : 'bg-danger' }}">
                                                 {{ ucfirst($rpt->status) }}
                                             </span>
                                         </td>

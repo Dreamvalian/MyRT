@@ -26,20 +26,18 @@
     <!-- Navbar Brand-->
     <a class="navbar-brand ps-3" href="{{ url('home-admin') }}">MyRT</a>
     <!-- Sidebar Toggle-->
-    <button class="btn btn-link btn-sm order-1 order-lg-0 me-4 me-lg-0" id="sidebarToggle" href="#!"><i
-        class="fas fa-bars"></i></button>
+    <button class="btn btn-link btn-sm order-1 order-lg-0 me-4 me-lg-0" id="sidebarToggle" href="#!"><i class="fas fa-bars"></i></button>
     <!-- Navbar-->
     <ul class="navbar-nav ms-auto ms-md-0 me-3 me-lg-4">
       <li class="nav-item dropdown">
-        <a class="nav-link dropdown-toggle" id="navbarDropdown" href="#" role="button" data-bs-toggle="dropdown"
-          aria-expanded="false"><i class="fas fa-user fa-fw"></i></a>
+        <a class="nav-link dropdown-toggle" id="navbarDropdown" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false"><i class="fas fa-user fa-fw"></i></a>
         <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
           <li><a class="dropdown-item" href="#!">Settings</a></li>
           <li><a class="dropdown-item" href="#!">Activity Log</a></li>
           <li>
             <hr class="dropdown-divider" />
           </li>
-          <li><a class="dropdown-item" href="#!">Logout</a></li>
+          <li><a class="dropdown-item" href="{{route('logout')}}">Logout</a></li>
         </ul>
       </li>
     </ul>
@@ -55,8 +53,7 @@
               Dashboard
             </a>
             <div class="sb-sidenav-menu-heading">Activity</div>
-            <a class="nav-link collapsed" href="#" data-bs-toggle="collapse" data-bs-target="#collapseLayouts"
-              aria-expanded="false" aria-controls="collapseLayouts">
+            <a class="nav-link collapsed" href="#" data-bs-toggle="collapse" data-bs-target="#collapseLayouts" aria-expanded="false" aria-controls="collapseLayouts">
               <div class="sb-nav-link-icon"><i class="fas fa-columns"></i></div>
               Admin
               <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
@@ -67,11 +64,15 @@
                 <a class="nav-link" href="{{ url('activity-admin') }}">Activity Admin</a>
               </nav>
             </div>
+            <a class="nav-link" href="{{url('charts')}}">
+              <div class="sb-nav-link-icon"><i class="fas fa-chart-area"></i></div>
+              Charts
+            </a>
           </div>
         </div>
         <div class="sb-sidenav-footer">
           <div class="small">Logged in as:</div>
-          MyRT
+          {{Auth::user()->nama}}
         </div>
       </nav>
     </div>
@@ -98,8 +99,7 @@
                 </div>
                 <div class="mb-3">
                   <label for="activityDescription" class="form-label">Description</label>
-                  <textarea class="form-control" id="activityDescription" name="description" rows="3"
-                    required></textarea>
+                  <textarea class="form-control" id="activityDescription" name="description" rows="3" required></textarea>
                 </div>
                 <div class="mb-3">
                   <label for="activityDate" class="form-label">Date</label>
@@ -113,8 +113,7 @@
       </main>
     </div>
   </div>
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"
-    crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>
   <script src="{{ asset('js/scripts.js') }}"></script>
 </body>
 
