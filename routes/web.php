@@ -33,6 +33,10 @@ Route::get('/logout', [LogoutController::class, 'logout'])->name('logout');
 
 
 
+
+
+
+
 Route::group(['middleware' => ['auth']], function () {
     Route::group(['middleware' => ['isAdmin:ADMIN']], function () {
         // Route::resource('admin', AdminController::class);
@@ -50,11 +54,14 @@ Route::group(['middleware' => ['auth']], function () {
         Route::post('/report/reject/{report_id}', [ReportController::class, 'reject'])->name('report.reject');
         /*Chart*/
         Route::get('/charts', [ChartController::class, 'index'])->name('charts');
+        /*resident*/
+        Route::post('/add-resident', [ResidentsController::class, 'store'])->name('add-resident');
     });
     Route::group(['middleware' => ['isAdmin:USER']], function () {
         // Route::resource('user', UserController::class);
         // dd(Auth::user()->nomor_kk);
         Route::get('/home-user', [UserController::class, 'index'])->name('home-user');
+        Route::get('/add-report-page', [ReportController::class, 'create']);
         Route::post('/add-report-user', [ReportController::class, 'store']);
     });
 });

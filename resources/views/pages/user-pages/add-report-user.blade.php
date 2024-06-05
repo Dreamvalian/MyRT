@@ -61,7 +61,7 @@
         </div>
         <div class="sb-sidenav-footer">
           <div class="small">Logged in as:</div>
-          MyRT
+          {{Auth::user()->nama}}
         </div>
       </nav>
     </div>
@@ -82,34 +82,38 @@
               <form action="{{ url('add-report-user') }}" method="POST" enctype="multipart/form-data">
                 @csrf
                 <div class="mb-3">
-                  <label for="reportTitle" class="form-label">Report Title</label>
+                  <label for="title" class="form-label">Judul Laporan</label>
                   <input type="text" class="form-control" id="title" name="title" required>
                 </div>
                 <div class="mb-3">
-                  <label for="reportDescription" class="form-label">Description</label>
+                  <label for="description" class="form-label">Deskripsi</label>
                   <textarea class="form-control" id="description" name="description" rows="3" required></textarea>
                 </div>
                 <div class="mb-3">
-                  <label for="reportCategory" class="form-label">Category</label>
+                  <label for="reportCategory" class="form-label">Kategori</label>
                   <select class="form-control" id="category" name="type_report" rows="3" required>
                     <option value="Kegiatan">Kegiatan</option>
                     <option value="Keresahan">Keresahan</option>
+                    <option value="Tamu">Tamu</option>
                     <option value="Perubahaan Data">Perubahaan Data</option>
                   </select>
                 </div>
-                <div class="mb-3">
-                  <label for="reportDate" class="form-label">Date Start</label>
-                  <input type="date" class="form-control" id="date_start" name="date_start" required>
+                <div id="dateSelector">
+                  <div class="mb-3">
+                    <label for="reportDate" class="form-label">Tanggal Mulai</label>
+                    <input type="date" class="form-control" id="date_start" name="date_start" required>
+                  </div>
+                  <div class="mb-3">
+                    <label for="reportDateEnd" class="form-label">Tanggal Selesai</label>
+                    <input type="date" class="form-control" id="date_end" name="date_end" required>
+                  </div>
                 </div>
+
                 <div class="mb-3">
-                  <label for="reportDate" class="form-label">Date End</label>
-                  <input type="date" class="form-control" id="date_end" name="date_end" required>
-                </div>
-                <div class="mb-3">
-                  <label for="reportPicture" class="form-label">Image</label>
+                  <label for="reportPicture" class="form-label">Foto</label>
                   <input type="file" class="form-control" id="picture" name="picture">
                 </div>
-                <button type="submit" class="btn btn-primary">Add Report</button>
+                <button type="submit" class="btn btn-primary">Tambah Laporan</button>
               </form>
             </div>
           </div>

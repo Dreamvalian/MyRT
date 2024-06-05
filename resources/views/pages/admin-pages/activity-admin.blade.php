@@ -43,7 +43,7 @@
                     <li>
                         <hr class="dropdown-divider" />
                     </li>
-                    <li><a class="dropdown-item" href="#!">Logout</a></li>
+                    <li><a class="dropdown-item" href="{{route('logout')}}">Logout</a></li>
                 </ul>
             </li>
         </ul>
@@ -70,11 +70,15 @@
                                 <a class="nav-link" href="{{ url('activity-admin') }}">Activity Admin</a>
                             </nav>
                         </div>
+                        <a class="nav-link" href="{{url('charts')}}">
+                            <div class="sb-nav-link-icon"><i class="fas fa-chart-area"></i></div>
+                            Charts
+                        </a>
                     </div>
                 </div>
                 <div class="sb-sidenav-footer">
                     <div class="small">Logged in as:</div>
-                    MyRT
+                    {{Auth::user()->nama}}
                 </div>
             </nav>
         </div>
@@ -92,7 +96,7 @@
                             Activity List
                         </div>
                         <div class="card-body">
-                            <table class="table table-bordered">
+                            <table class="table table-bordered" id="datatablesSimple2">
                                 <thead>
                                     <tr>
                                         <th>#</th>

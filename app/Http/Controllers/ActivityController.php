@@ -26,7 +26,7 @@ class ActivityController extends Controller
             $image = $request->file('picture');
             $imagePath = $image->store('activity_images', 'public');
 
-            echo $imagePath;
+            // echo $imagePath;
         }
 
         Activities::create([
@@ -35,7 +35,7 @@ class ActivityController extends Controller
             'date_start' => $request->date_start,
             'date_end' => $request->date_end,
             'picture' => $imagePath,
-            'status' => null,
+            // 'status' => null,
         ]);
         return redirect('activity-admin')->with('success', 'Activity created successfully');
     }
@@ -55,8 +55,25 @@ class ActivityController extends Controller
     public function update(Request $request, $activity_id)
     {
         $activities = Activities::findOrFail($activity_id);
-        $input = $request->all();
-        $activities->update($input);
+        // $input = $request->all();
+
+        $imagePath = $activities->picture;
+        // dd($imagePath = $activities->picture);
+        if ($request->hasFile('picture')) {
+            $image = $request->file('picture');
+            $imagePath = $image->store('activity_images', 'public');
+            // dd($imagePath);
+            // echo $imagePath;
+        }
+
+        $activities->update([
+            'title' => $request->title,
+            'description' => $request->description,
+            'date_start' => $request->date_start,
+            'date_end' => $request->date_end,
+            'picture' => $imagePath,
+        ]);
+
         return redirect('activity-admin')->with('success', 'Activity updated successfully');
     }
 
