@@ -19,13 +19,12 @@
         <a href="#" class="btn btn-primary btn-lg mb-2">
           Let's Get Started <i class="fas fa-arrow-right ml-2"></i>
         </a>
-
-        <a href="#" class="btn btn-secondary btn-lg mb-2">
-          Available on the App Store <i class="fab fa-apple ml-2"></i> <!-- Add icon here -->
-        </a>
       </div>
       <div class="col-md-6 text-center">
-        <img src="{{ asset('/') }}" alt="Neighborhood Management">
+        <video autoplay loop muted playsinline width="80%">
+          <source src="{{ asset('assets\videos\hero-video.mp4') }}" type="video/mp4">
+          Your browser does not support the video tag.
+        </video>
       </div>
     </div>
   </div>

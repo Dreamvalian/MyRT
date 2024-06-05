@@ -92,7 +92,7 @@
                             Activity List
                         </div>
                         <div class="card-body">
-                            <table class="table table-bordered">
+                            <table class="table table-bordered" id="datatablesSimple2">
                                 <thead>
                                     <tr>
                                         <th>#</th>
@@ -107,6 +107,8 @@
                                         <td>{{ $act->activity_id }}</td>
                                         <td>{{ $act->title }}</td>
                                         <td>{{ $act->date_start }}</td>
+
+
                                         <td>
                                             <button type="button" class="btn btn-info btn-sm" data-bs-toggle="modal" data-bs-target="#activityModal{{$act->activity_id}}">
                                                 <i class="fas fa-eye"></i>
@@ -124,6 +126,7 @@
                                             <div class="modal-content">
                                                 <div class="modal-header">
                                                     <h5 class="modal-title" id="activityModalLabel">Detail Aktivitas</h5>
+
                                                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                                                 </div>
                                                 <div class="modal-body">
@@ -147,6 +150,7 @@
                                                         <div class="col-md-6">
                                                             <label for="picture" class="form-label">Picture:</label>
                                                             @if($act->picture)
+
                                                             <img src="{{ asset('storage/' . $act->picture) }}" class="img-fluid" alt="Activity Picture">
                                                             @else
                                                             <p>No picture available</p>

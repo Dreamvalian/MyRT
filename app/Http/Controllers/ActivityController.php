@@ -24,7 +24,9 @@ class ActivityController extends Controller
         $imagePath = 'default.png';
         if ($request->hasFile('picture')) {
             $image = $request->file('picture');
-            $imagePath = $image->store('images', 'public');
+            $imagePath = $image->store('activity_images', 'public');
+
+            echo $imagePath;
         }
 
         Activities::create([
