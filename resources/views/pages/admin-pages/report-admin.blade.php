@@ -98,7 +98,7 @@
                             Report List
                         </div>
                         <div class="card-body">
-                            <table class="table table-bordered">
+                            <table class="table table-bordered" id="datatablesSimple2">
                                 <thead>
                                     <tr>
                                         <th>Report-ID</th>
@@ -106,7 +106,9 @@
                                         <th>Type Report</th>
                                         <th>Date Created</th>
                                         <th>Actions</th>
+
                                         <th>Status Laporan</th>
+
                                     </tr>
                                 </thead>
                                 <tbody>

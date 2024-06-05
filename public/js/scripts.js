@@ -88,6 +88,7 @@ window.addEventListener("DOMContentLoaded", (event) => {
 
     // console.log((reportTitleElement.innerHTML = "Gatau"));
 
+
     categoryValue.addEventListener("change", function () {
         const selectedCategory = this.value;
 
@@ -119,3 +120,5 @@ window.addEventListener("DOMContentLoaded", (event) => {
         }
     });
 });
+
+
