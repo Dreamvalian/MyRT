@@ -58,7 +58,7 @@
               Dashboard
             </a>
             <div class="sb-sidenav-menu-heading">Menu</div>
-            <a class="nav-link" href="{{ url('add-report-user') }}">
+            <a class="nav-link" href="{{ url('add-report-page') }}">
               <div class="sb-nav-link-icon"><i class="fas fa-chart-area"></i></div>
               Add Report
             </a>

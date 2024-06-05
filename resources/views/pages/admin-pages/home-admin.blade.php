@@ -67,11 +67,12 @@
                     </div>
                 </div>
                 <div class="sb-sidenav-footer">
-                    <div class="small">Logged in as:</div>
-                    MyRT
+          <div class="small">Logged in as:</div>
+          {{Auth::user()->nama}}
                 </div>
             </nav>
         </div>
+
         <!-- Dashboard -->
         <div id="layoutSidenav_content">
             <main>
@@ -168,6 +169,7 @@
                     </div>
                 </div>
             </footer>
+
         </div>
     </div>
 
@@ -227,6 +229,61 @@
             </div>
         </div>
     </div>
+
+  </div>
+
+  <!-- Modal -->
+  @foreach ($residents as $rsd)
+  <div class="modal fade" id="residentModal{{$rsd->nomor_kk}}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">Detail Keluarga - {{$rsd->nama_lengkap}}</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <div class="card body">
+            <table class="table" id="datatablesSimple2">
+              <thead>
+                <tr>
+                  <th>NIK</th>
+                  <th>NOMOR_KK</th>
+                  <th>Nama</th>
+                  <th>Alamat</th>
+                  <th>jenis_kelamin</th>
+                  <th>tempat_lahir</th>
+                  <th>tanggal_lahir</th>
+                  <th>agama</th>
+                  <th>pendidikan</th>
+                  <th>jenis_pekerjaan</th>
+                </tr>
+              </thead>
+              <tbody>
+                @foreach ($residents as $resident)
+                @if ($resident->nomor_kk === $rsd->nomor_kk)
+                <tr>
+                  <td>{{$resident->nik}}</td>
+                  <td>{{$resident->nomor_kk}}</td>
+                  <td>{{$resident->nama_lengkap}}</td>
+                  <td>{{$resident->alamat}}</td>
+                  <td>{{$resident->jenis_kelamin}}</td>
+                  <td>{{$resident->tempat_lahir}}</td>
+                  <td>{{$resident->tanggal_lahir}}</td>
+                  <td>{{$resident->agama}}</td>
+                  <td>{{$resident->pendidikan}}</td>
+                  <td>{{$resident->jenis_pekerjaan}}</td>
+                </tr>
+                @endif
+                @endforeach
+              </tbody>
+            </table>
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+          <button type="button" class="btn btn-primary" onclick="exportToCSV('residentModal{{$rsd->nomor_kk}}')">Export
+            CSV</button>
+
     @endforeach
 
     <!-- Modal for Adding New Resident -->
@@ -330,6 +387,7 @@
                     <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
                 </div>
             </div>
+
         </div>
     </div>
 

@@ -61,6 +61,7 @@ Route::group(['middleware' => ['auth']], function () {
         // Route::resource('user', UserController::class);
         // dd(Auth::user()->nomor_kk);
         Route::get('/home-user', [UserController::class, 'index'])->name('home-user');
+        Route::get('/add-report-page', [ReportController::class, 'create']);
         Route::post('/add-report-user', [ReportController::class, 'store']);
     });
 });
