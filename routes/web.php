@@ -45,6 +45,7 @@ Route::group(['middleware' => ['auth']], function () {
         Route::get('/add-activity-admin', [ActivityController::class, 'create']);
         Route::post('/add-activity-admin', [ActivityController::class, 'store']);
         Route::get('/activity-admin', [ActivityController::class, 'index'])->name('activity-admin');
+
         Route::get('activity-admin/edit/{activity_id}', [ActivityController::class, 'edit'])->name('activity.edit');
         Route::put('activity-admin/update/{activity_id}', [ActivityController::class, 'update'])->name('activity.update');
         Route::delete('activity-admin/delete/{activity_id}', [ActivityController::class, 'destroy'])->name('activity.destroy');
@@ -63,6 +64,7 @@ Route::group(['middleware' => ['auth']], function () {
         Route::get('/home-user', [UserController::class, 'index'])->name('home-user');
         Route::get('/add-report-page', [ReportController::class, 'create']);
         Route::post('/add-report-user', [ReportController::class, 'store']);
+        Route::get('/activity-user', [ActivityController::class, 'indexUser'])->name('activity-user');
     });
 });
 

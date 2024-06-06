@@ -33,7 +33,7 @@
           <li>
             <hr class="dropdown-divider" />
           </li>
-          <li><a class="dropdown-item" href="#!">Logout</a></li>
+          <li><a class="dropdown-item" href="{{url('logout')}}">Logout</a></li>
         </ul>
       </li>
     </ul>
@@ -49,9 +49,13 @@
               Dashboard
             </a>
             <div class="sb-sidenav-menu-heading">Menu</div>
-            <a class="nav-link" href="{{ url('add-report-user') }}">
+            <a class="nav-link" href="{{ url('add-report-page') }}">
               <div class="sb-nav-link-icon"><i class="fas fa-chart-area"></i></div>
               Add Report
+            </a>
+            <a class="nav-link" href="{{ url('activity-user') }}">
+              <div class="sb-nav-link-icon"><i class="fas fa-chart-area"></i></div>
+              Activity
             </a>
             <!-- <a class="nav-link" href="{{ url('tables') }}">
               <div class="sb-nav-link-icon"><i class="fas fa-table"></i></div>

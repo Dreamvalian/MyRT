@@ -62,6 +62,11 @@
               <div class="sb-nav-link-icon"><i class="fas fa-chart-area"></i></div>
               Add Report
             </a>
+            <a class="nav-link" href="{{ url('activity-user') }}">
+              <div class="sb-nav-link-icon"><i class="fas fa-chart-area"></i></div>
+              Activity
+            </a>
+
             <!-- <a class="nav-link" href="{{ url('tables') }}">
               <div class="sb-nav-link-icon"><i class="fas fa-table"></i></div>
               Tables

@@ -13,6 +13,11 @@ class ActivityController extends Controller
         $data['activities'] = Activities::all();
         return view('pages.admin-pages.activity-admin', $data);
     }
+    public function indexUser()
+    {
+        $data['activities'] = Activities::all();
+        return view('pages.user-pages.activity-user', $data);
+    }
 
     public function create()
     {
